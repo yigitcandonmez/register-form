@@ -1,0 +1,70 @@
+@use "./colors";
+
+$light-gray: #DADADA;
+$dark-gray: #8C8C8C;
+$color-placeholder: #8E8E8E;
+$color-light-black : #2C2C2C;
+$color-background-white: #E5E5E5;
+$color-blue: #444AFF;
+$color-white: #FFFFFF;
+$color-orange: #FFBF5E;
+$color-black: #000000;
+
+$theme-colors-map: (
+  light: (
+    backgroundGray: $light-gray,
+    backgroundWhite: $color-background-white,
+    raidColor: $color-blue,
+    textColor: $color-black,
+    placeHolder: $color-placeholder,
+    colorBlue: $color-blue
+  ),
+  dark: (
+    backgroundGray: $dark-gray,
+    backgroundWhite: $color-light-black,
+    raidColor: $color-orange,
+    textColor: $color-white,
+    placeHolder: $color-placeholder,
+    colorBlue: $color-white
+  ),
+) !default;
+
+@function theme-color($color, $variant: 'background') {
+    @return map-get(map-get($theme-colors-map, $color), $variant);
+}
+
+@each $theme-color, $i in $theme-colors-map {
+  .theme--#{$theme-color + ''} {
+    transition: .6s;
+
+    button {
+      transition: .6s;
+      background-color: theme-color($theme-color, "raidColor");
+    }
+
+    input {
+      background-color: transparent;
+      border: 2px solid theme-color($theme-color, "placeHolder");
+    }
+
+    .theme--border {
+      border-bottom: 3px solid theme-color($theme-color, "raidColor")
+    }
+
+    .pararell {
+      transition: .6s;
+      fill: theme-color($theme-color, "raidColor");
+    }
+
+    .left {
+      color:theme-color($theme-color, "colorBlue"); 
+      transition: .6s;
+      background-color: theme-color($theme-color, "backgroundGray");
+    }
+    .right {
+      transition: .6s;
+      color: theme-color($theme-color, "textColor");
+      background-color: theme-color($theme-color, "backgroundWhite");
+    }
+  }
+}

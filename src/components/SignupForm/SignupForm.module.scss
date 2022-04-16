@@ -1,0 +1,42 @@
+.signup-row {
+    display: flex;
+}
+
+.signup-full-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-grow {
+    flex-grow: 1;
+    
+    &:first-child {
+        padding-right: 2rem;
+    }
+
+    &:last-child {
+        padding-left: 2rem;
+    }
+}
+
+.signup-form-title {
+    width: 25%;
+    padding-bottom: 5rem;
+    align-self: flex-start;
+
+    h1 {
+        font-size: 4.7rem;
+        padding-bottom: 1rem;
+    }
+}
+
+.theme-icon {
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+    cursor: pointer;
+}
+
+.form-container {
+    width: 100%;
+}
